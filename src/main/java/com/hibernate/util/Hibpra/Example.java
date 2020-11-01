@@ -23,8 +23,7 @@ public class Example {
 	    private static SessionFactory sessionFactory;
 		 private static StandardServiceRegistry standardServiceRegistry;
 		  
-		 
-		  static{
+		  public static SessionFactory getSessionFactory() {
 			  System.out.println("hello static block");
 			    if (sessionFactory == null) {
 			      try {
@@ -45,9 +44,7 @@ public class Example {
 			        }
 			      }
 			    }
-		  }
 		  
-		  public static SessionFactory getSessionFactory() {
 			  if(sessionFactory!=null)
 			  {
 				  System.out.println("sucess");
