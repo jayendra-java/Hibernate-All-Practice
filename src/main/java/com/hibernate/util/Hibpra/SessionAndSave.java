@@ -42,8 +42,7 @@ public class SessionAndSave {
 		sr.setBranch("def");
 		s12.save(sr);
 		tx12.commit();
-		
-		
+	
 		System.out.println("hello world hibernate");
 		
     }

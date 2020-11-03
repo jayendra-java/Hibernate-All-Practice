@@ -11,12 +11,8 @@ import org.hibernate.criterion.Restrictions;
 
 import com.model.Student;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
+public class CriteriaExample {
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SessionFactory sf=Example.getSessionFactory();
@@ -26,8 +22,8 @@ public class App
 		Projection myProjection = Projections.property("name");
 
 		cr.setProjection(myProjection);
-		List<Object> li=(List<Object>)cr.list();
-		for(Object st:li)
+		List<String> li=cr.list();
+		for(String st:li)
 		{
 			System.out.println(st);
 		}
@@ -43,6 +39,5 @@ public class App
 		
 
 	}
-
 
 }
