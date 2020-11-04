@@ -10,6 +10,7 @@ public class GetvsLoad {
 	{
 		Session s=Example.getSessionFactory().openSession();
 		Transaction tx = s.beginTransaction();
+		
 		Student s1=null;
 		Student s3=null;
 		try
