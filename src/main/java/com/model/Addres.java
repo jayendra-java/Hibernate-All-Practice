@@ -9,14 +9,16 @@ public class Addres {
     private int id;
 	private String city;
 	private String country;
-	@OneToOne(mappedBy = "adress")
-	private Student st;
+	@OneToOne()
+	@JoinColumn(name="Student_id")
+	private Student student;
 	
-	public Student getSt() {
-		return st;
+	
+	public Student getStudent() {
+		return student;
 	}
-	public void setSt(Student st) {
-		this.st = st;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 	public int getId() {
 		return id;
@@ -38,7 +40,7 @@ public class Addres {
 	}
 	@Override
 	public String toString() {
-		return "Addres [id=" + id + ", city=" + city + ", country=" + country + ", st=" + st + "]";
+		return "Addres [id=" + id + ", city=" + city + ", country=" + country + "]";
 	}
 	
 
