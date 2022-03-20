@@ -13,7 +13,6 @@ public class Addres {
 	@JoinColumn(name="Student_id")
 	private Student student;
 	
-	
 	public Student getStudent() {
 		return student;
 	}

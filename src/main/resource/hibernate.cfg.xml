@@ -15,6 +15,8 @@
 		<mapping class="com.model.Addres"/>
 		<mapping class="com.model.Student"/>
 		<mapping class="com.model.Account"/>
+		<mapping class="com.model.Games"/>
+		<mapping class="com.model.Hibobj"/>
 		
 		
 	</session-factory>

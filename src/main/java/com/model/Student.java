@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -21,17 +24,38 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-
 	private String name;
 	private int age;
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "student")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
 	private Addres addres;
-	/*@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ACCOUNT_ID")*/
-	@OneToMany(mappedBy = "students",cascade = CascadeType.ALL)
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "ACCOUNT_ID")
+	 */
+	@OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
 	private Set<Account> accounts;
+	
+	
+	
+	public List<Games> getGames() {
+		return games;
+	}
 
+	public void setGames(List<Games> games) {
+		this.games = games;
+	}
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="Student_Games",joinColumns = {@JoinColumn(referencedColumnName="id")},
+			inverseJoinColumns= {@JoinColumn(referencedColumnName="id")})
+	private List<Games> games;
+	
+	
+	
+	
+	
+	
 	
 
 	public Set<Account> getAccounts() {
@@ -64,14 +88,34 @@ public class Student {
 		this.branch = branch;
 	}
 
+	
+	
+	
+	
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) {//name=chandu
 		this.name = name;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public int getAge() {
 		return age;
 	}
@@ -82,9 +126,10 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", accounts=" + accounts + ", branch=" + branch
-				+ "]";
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", addres=" + addres + ", accounts=" + accounts
+				+ ", games=" + games + ", branch=" + branch + "]";
 	}
+
 	public Addres getAddres() {
 		return addres;
 	}
