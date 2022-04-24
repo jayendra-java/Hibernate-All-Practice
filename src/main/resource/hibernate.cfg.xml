@@ -12,11 +12,15 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="packagesToScan" >com.model></property>
-		<mapping class="com.model.Addres"/>
 		<mapping class="com.model.Student"/>
+		<mapping class="com.model.TeamIndia"/>
+		<mapping class="com.model.Batsmen"/>
+		<mapping class="com.model.Bowler"/>
+		<mapping class="com.model.Addres"/>
 		<mapping class="com.model.Account"/>
 		<mapping class="com.model.Games"/>
 		<mapping class="com.model.Hibobj"/>
+		 
 		
 		
 	</session-factory>

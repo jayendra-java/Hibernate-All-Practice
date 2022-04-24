@@ -9,16 +9,62 @@ import javax.transaction.Transaction;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.model.Batsmen;
+import com.model.Bowler;
 import com.model.Student;
+import com.model.TeamIndia;
 
 public class SessionAndSave {
 	public static void main( String[] args ) throws Exception
     {
-		//Example e=new Example();
+		Student st=null;
+		try(Session s=Example.getSessionFactory().openSession()) {
+			s.beginTransaction();
+			TeamIndia t=new TeamIndia();
+			t.setFirstName("ravi");t.setLastName("sashtri");
+			Batsmen b=new Batsmen();b.setFirstName("virat");
+			b.setLastName("kohili");b.setBattingHand("right");b.setHighScore("183");
+			Bowler bo=new Bowler();
+			bo.setFirstName("zaher");bo.setLastName("khan");bo.setBowlingHand("right");bo.setBestFigure("5");
+			s.save(t);s.save(b);s.save(bo);
+			s.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			// TODO: handle exception
+		}
+		//st.setBranch("mech");;
+		/*try(Session s=Example.getSessionFactory().openSession()) {
+			Student st1=s.get(Student.class, 99);;
+			s.beginTransaction();
+			System.out.println("update the obj");
+			//s.update(st);
+			System.out.println("merge completed");
+			s.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			// TODO: handle exception
+		}
+		/*Exampl e e=new Example();
 		SessionFactory sf=Example.getSessionFactory();
 		Session s=sf.openSession();
 		org.hibernate.Transaction tx=s.beginTransaction();
-		Student s1=new Student("phani",26,"E.C.E");
+		Student s1=new Student("phani",27,"E.C.E");
+		System.out.println("save test");
+		//int id=(int) s.save(s1);
+		//System.out.println("id is"+id);
+		//System.out.println("flush test");
+		//Student st=s.load(Student.class, 89);
+		//System.out.println("load test");
+		System.out.println("dirty check test");
+		Student st1=s.get(Student.class, 99);
+		//System.out.println("commit test");
+		System.out.println(st1);
+		System.out.println("dirty check");
+		st1.setName("mani");
+		//System.out.println(st.getId());
+		s.flush();
+		//tx.commit();
+		/*Student s1=new Student("phani",26,"E.C.E");
 		s.saveOrUpdate(s1);
 		s1.setName("suresh");
 		System.out.println(s1);
@@ -43,7 +89,7 @@ public class SessionAndSave {
 		s12.save(sr);
 		tx12.commit();
 	
-		System.out.println("hello world hibernate");
+		System.out.println("hello world hibernate");*/
 		
     }
 	

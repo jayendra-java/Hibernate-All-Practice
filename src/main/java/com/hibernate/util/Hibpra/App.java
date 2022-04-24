@@ -5,10 +5,13 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
+import com.model.Addres;
+import com.model.Hibobj;
 import com.model.Student;
 
 /**
@@ -21,6 +24,15 @@ public class App
 		// TODO Auto-generated method stub
 		SessionFactory sf=Example.getSessionFactory();
 		Session s=sf.openSession();
+		Transaction tx= s.beginTransaction();
+		tx.begin();
+		Hibobj h=new Hibobj();
+		h.setAge(22);h.setName("nani");
+		s.save(h);
+		//s.flush();
+		tx.commit();
+	
+		/*
 		Criteria cr=s.createCriteria(Student.class);
 		cr.setMaxResults(2);
 		Projection myProjection = Projections.property("name");
@@ -42,6 +54,7 @@ public class App
 		}
 		
 
+	}*/
 	}
 
 
