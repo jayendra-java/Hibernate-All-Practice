@@ -1,10 +1,20 @@
 package com.model;
 
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 //import org.hibernate.annotations.GenericGenerator;
 
@@ -14,47 +24,126 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	 //@Column(name="_name") 
 	private String name;
-	 //@Column(name="-age") 
 	private int age;
-	  
-	private String branch;
-	public Student()
-	{
-		
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
+	private Addres addres;
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "ACCOUNT_ID")
+	 */
+	@OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
+	private Set<Account> accounts;
+	
+	
+	
+	public List<Games> getGames() {
+		return games;
 	}
-	public Student( String name, int age, String branch) {
-		
-		//this.id = id;
+
+	public void setGames(List<Games> games) {
+		this.games = games;
+	}
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="Student_Games",joinColumns = {@JoinColumn(referencedColumnName="id")},
+			inverseJoinColumns= {@JoinColumn(referencedColumnName="id")})
+	private List<Games> games;
+	
+	
+	
+	
+	
+	
+	
+
+	public Set<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(Set<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+	private String branch;
+
+	public Student() {
+
+	}
+
+	public Student(String name, int age, String branch) {
+
+		// this.id = id;
 		this.name = name;
 		this.age = age;
 		this.branch = branch;
 	}
+
 	public String getBranch() {
 		return branch;
 	}
+
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
+
+	
+	
+	
 	
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+
+	public void setName(String name) {//name=chandu
 		this.name = name;
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 	@Override
 	public String toString() {
-		return "Student [id="  + ", name=" + name + ", age=" + age + ", branch=" + branch + "]";
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", addres=" + addres + ", accounts=" + accounts
+				+ ", games=" + games + ", branch=" + branch + "]";
 	}
-	
-	
-	
+
+	public Addres getAddres() {
+		return addres;
+	}
+
+	public void setAddres(Addres addres) {
+		this.addres = addres;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }
