@@ -20,6 +20,10 @@
 		<mapping class="com.model.Account"/>
 		<mapping class="com.model.Games"/>
 		<mapping class="com.model.Hibobj"/>
+		<mapping class="com.model.inheritance.TeamEng"/>
+		<mapping class="com.model.inheritance.EngBatsmen"/>
+		<mapping class="com.model.inheritance.EngBowler"/>
+		
 		 
 		
 		

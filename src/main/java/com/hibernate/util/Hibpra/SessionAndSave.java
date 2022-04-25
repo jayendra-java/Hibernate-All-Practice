@@ -13,6 +13,9 @@ import com.model.Batsmen;
 import com.model.Bowler;
 import com.model.Student;
 import com.model.TeamIndia;
+import com.model.inheritance.EngBatsmen;
+import com.model.inheritance.EngBowler;
+import com.model.inheritance.TeamEng;
 
 public class SessionAndSave {
 	public static void main( String[] args ) throws Exception
@@ -20,13 +23,13 @@ public class SessionAndSave {
 		Student st=null;
 		try(Session s=Example.getSessionFactory().openSession()) {
 			s.beginTransaction();
-			TeamIndia t=new TeamIndia();
-			t.setFirstName("ravi");t.setLastName("sashtri");
-			Batsmen b=new Batsmen();b.setFirstName("virat");
-			b.setLastName("kohili");b.setBattingHand("right");b.setHighScore("183");
-			Bowler bo=new Bowler();
-			bo.setFirstName("zaher");bo.setLastName("khan");bo.setBowlingHand("right");bo.setBestFigure("5");
-			s.save(t);s.save(b);s.save(bo);
+			TeamEng t=new TeamEng();
+			t.setFirstName("abc");t.setLastName("def");
+			EngBatsmen eb=new EngBatsmen("right", "170");
+			eb.setFirstName("bnm");eb.setLastName("jkl");
+			EngBowler ebo=new EngBowler("left", "5");
+			ebo.setFirstName("iop");ebo.setLastName("yui");
+			s.save(t);s.save(ebo);s.save(eb);
 			s.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println(e);
