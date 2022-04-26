@@ -13,23 +13,32 @@ import com.model.Batsmen;
 import com.model.Bowler;
 import com.model.Student;
 import com.model.TeamIndia;
+import com.model.inheritance.AusBatsmen;
+import com.model.inheritance.AusBowler;
 import com.model.inheritance.EngBatsmen;
 import com.model.inheritance.EngBowler;
+import com.model.inheritance.TeamAus;
 import com.model.inheritance.TeamEng;
+import com.model.onetoone.Accountone;
+import com.model.onetoone.Employee;
 
 public class SessionAndSave {
 	public static void main( String[] args ) throws Exception
     {
-		Student st=null;
+		///Student st=null;
 		try(Session s=Example.getSessionFactory().openSession()) {
 			s.beginTransaction();
-			TeamEng t=new TeamEng();
-			t.setFirstName("abc");t.setLastName("def");
-			EngBatsmen eb=new EngBatsmen("right", "170");
-			eb.setFirstName("bnm");eb.setLastName("jkl");
-			EngBowler ebo=new EngBowler("left", "5");
-			ebo.setFirstName("iop");ebo.setLastName("yui");
-			s.save(t);s.save(ebo);s.save(eb);
+			System.out.println("join tabel test");
+			Employee e=new Employee();
+			Accountone a=new Accountone();
+			a.setBank("Idfc");a.setAccnum("123qwe");
+			e.setAccount(a);e.setExp((float) 3.3);e.setName("mani");
+			s.save(e);
+			Employee ed=s.get(Employee.class,137);
+			System.out.println("emp name is"+ed.getName());
+			System.out.println("fetch test");
+			System.out.println("emp acc bank is"+ed.getAccount().getBank());
+			
 			s.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println(e);

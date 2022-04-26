@@ -23,6 +23,11 @@
 		<mapping class="com.model.inheritance.TeamEng"/>
 		<mapping class="com.model.inheritance.EngBatsmen"/>
 		<mapping class="com.model.inheritance.EngBowler"/>
+				<mapping class="com.model.onetoone.Accountone"/>
+				<mapping class="com.model.onetoone.Employee"/>
+		<mapping class="com.model.inheritance.TeamAus"/>
+		<mapping class="com.model.inheritance.AusBatsmen"/>
+		<mapping class="com.model.inheritance.AusBowler"/>
 		
 		 
 		
